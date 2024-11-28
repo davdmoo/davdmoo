@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,9 +35,9 @@ export default function RootLayout({
         </main>
 
         <footer className="flex space-x-6 py-6">
-          <a href="/">/home</a>
-          <a href="/experience">/experience</a>
-          <a href="/projects">/projects</a>
+          <Link href="/">/home</Link>
+          <Link href="/experience">/experience</Link>
+          <Link href="/projects">/projects</Link>
         </footer>
       </body>
     </html>

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function WorkSummary() {
   return (
     <div className="flex flex-col items-center text-justify">
@@ -6,7 +8,7 @@ export default function WorkSummary() {
       <hr className="my-6 w-full" />
 
       <div className="flex flex-col items-start w-full">
-        <h2 className="text-xl mb-2 font-bold">Staff Programmer at <a href="https://qios-id.com" target="_blank" rel="noopener noreferrer">Qios</a></h2>
+        <h2 className="text-xl mb-2 font-bold">Staff Programmer at <Link href="https://qios-id.com" target="_blank" rel="noopener noreferrer" >Qios</Link></h2>
         <p className="mb-4"><em>(February 2022 - present)</em></p>
         <ul className="list-disc">
           <li>Independently delivered a self-service bus ticketing Android app serving up to 90,000 transactions per month in Soekarno-Hatta airport</li>

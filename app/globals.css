@@ -10,6 +10,14 @@
   h2 {
     @apply text-2xl;
   }
+
+  a {
+    color: #FFB86C;
+  }
+
+  code {
+    color: var(--foreground);
+  }
 }
 
 :root {
