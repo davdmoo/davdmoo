@@ -13,7 +13,6 @@
 
   a {
     color: #E6C384;
-    @apply text-sm;
   }
 
   pre {
