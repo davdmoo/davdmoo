@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "David Mulyawan",
-  description: "My personal site",
+  title: "/davdmoo",
+  description: "Personal site built using Next.js and Tailwind",
 };
 
 export default function RootLayout({
@@ -29,15 +29,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col items-center`}
       >
-
-        <main className="max-w-2xl py-6 w-full flex-1 flex flex-col justify-center px-6">
+        <main className="lg:max-w-2xl py-6 w-full flex-1 flex flex-col justify-center px-6">
           {children}
         </main>
 
-        <footer className="flex space-x-6 py-6">
-          <Link href="/">/home</Link>
+        <footer className="py-4 px-2 space-x-6">
+          <Link href="/">/</Link>
           <Link href="/experience">/experience</Link>
           <Link href="/projects">/projects</Link>
+          <Link href="/guest-book">/guests</Link>
         </footer>
       </body>
     </html>

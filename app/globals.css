@@ -12,7 +12,12 @@
   }
 
   a {
-    color: #FFB86C;
+    color: #E6C384;
+    @apply text-sm;
+  }
+
+  pre {
+    background-color: #363646;
   }
 
   code {
@@ -21,14 +26,15 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #DCD7BA;
+  --foreground: #1F1F28;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #282A36;
-    --foreground: #F8F8F2;
+    /* kanagawa color scheme */
+    --background: #1F1F28;
+    --foreground: #DCD7BA;
   }
 }
 
