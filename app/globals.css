@@ -5,10 +5,18 @@
 @layer base {
   h1 {
     @apply text-4xl;
+    @apply font-bold;
   }
 
   h2 {
     @apply text-2xl;
+    @apply font-semibold;
+    @apply mb-2;
+  }
+
+  p {
+    @apply text-base;
+    @apply mb-2;
   }
 
   a {
@@ -21,6 +29,17 @@
 
   code {
     color: var(--foreground);
+  }
+
+  input {
+    background-color: #2a2d3a;
+    border: 1px solid #3b4261;
+  }
+
+  button {
+    background-color: #957fb8;
+    color: #1f1f28;
+    border: 1px solid #7e68a3;
   }
 }
 

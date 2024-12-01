@@ -1,39 +1,39 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-import Link from "next/link";
+import type { Metadata } from "next"
+import localFont from "next/font/local"
+import Link from "next/link"
+import "./globals.css"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
-});
+})
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
-});
+})
 
 export const metadata: Metadata = {
   title: "/davdmoo",
   description: "Personal site built using Next.js and Tailwind",
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col items-center`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col justify-between px-6`}
       >
-        <main className="lg:max-w-2xl py-6 w-full flex-1 flex flex-col justify-center px-6">
-          {children}
+        <main className="flex-grow flex flex-col items-center py-12">
+          <div className="lg:max-w-2xl md:max-w-2xl w-full">{children}</div>
         </main>
 
-        <footer className="py-4 px-2 space-x-6">
+        <footer className="flex justify-center py-6 px-2 space-x-6">
           <Link href="/">/</Link>
           <Link href="/experience">/experience</Link>
           <Link href="/projects">/projects</Link>
@@ -41,5 +41,5 @@ export default function RootLayout({
         </footer>
       </body>
     </html>
-  );
+  )
 }
