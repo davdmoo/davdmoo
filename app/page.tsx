@@ -46,8 +46,8 @@ export default function Home() {
       </p>
       <p>
         Some exciting features I worked on during this project were QRIS and EDC payment integration, communicating with
-        the device's printing hardware using Java and AIDL, and creating a (rather) simple error tracking/debugging tool
-        using Firestore and Crashlytics.
+        the device&apos;s printing hardware using Java and AIDL, and creating a (rather) simple error tracking/debugging
+        tool using Firestore and Crashlytics.
       </p>
 
       <hr className="my-6 w-full" />
