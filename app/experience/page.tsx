@@ -1,5 +1,5 @@
-import Link from "next/link";
-import PageHeader from "../components/page_header.components";
+import Link from "next/link"
+import PageHeader from "../components/page_header.components"
 
 export default function WorkSummary() {
   return (
@@ -59,5 +59,5 @@ export default function WorkSummary() {
         </p>
       </div>
     </div>
-  );
+  )
 }
