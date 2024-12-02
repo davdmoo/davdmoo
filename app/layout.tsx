@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col justify-between px-6`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col justify-between px-4`}
       >
         <main className="flex-grow flex flex-col items-center py-12">
           <div className="lg:max-w-2xl md:max-w-2xl w-full">{children}</div>
