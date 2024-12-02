@@ -20,45 +20,61 @@
   }
 
   a {
-    color: #E6C384;
+    @apply text-anchor hover:underline hover:text-anchor-visited;
+  }
+
+  a:visited {
+    @apply text-anchor-visited hover:underline;
+  }
+
+  a:active {
+    @apply text-anchor-visited hover:underline;
   }
 
   pre {
-    background-color: #363646;
+    @apply bg-lighter-background;
   }
 
   code {
-    color: var(--foreground);
+    @apply text-foreground;
   }
 
   input {
-    background-color: #2a2d3a;
-    border: 1px solid #3b4261;
+    /* background-color: #363646; */
+    @apply bg-input-background;
+    border: 1px solid var(--input-border);
   }
 
   button {
-    background-color: #957fb8;
-    color: #1f1f28;
-    border: 1px solid #7e68a3;
-    cursor: pointer;
+    @apply bg-button-background hover:bg-button-hover cursor-pointer;
+    border: 1px solid var(--button-border);
   }
 
   button:disabled {
-    background-color: #3b4261;
-    color: #727169;
-    border: 1px solid #2a2d3a;
-    cursor: not-allowed;
+    @apply bg-disabled text-disabled-foreground cursor-not-allowed;
+    border: 1px solid var(--disabled-foreground);
   }
 }
 
 :root {
   --background: #DCD7BA;
+  --lighter-background: #363646;
   --foreground: #1F1F28;
+  --anchor: #7E9CD8;
+  --anchor-alt: #E6C384;
+  --anchor-visited: #2D4F67;
+  --anchor-visited-alt: #FFA066;
+  --input-background: #1f1f28;
+  --input-border: #54546d;
+  --button-background: #6a9589;
+  --button-hover: #76946a;
+  --button-border: #76946a;
+  --disabled: #54546d;
+  --disabled-foreground: #727169;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* kanagawa color scheme */
     --background: #1F1F28;
     --foreground: #DCD7BA;
   }

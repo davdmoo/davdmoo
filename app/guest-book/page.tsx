@@ -83,7 +83,7 @@ export default function GuestBookPage() {
           onChange={(event) => setName(event.target.value)}
           placeholder="Name"
           disabled={formDisabled || isSaving}
-          className="mb-4 rounded-sm p-1.5"
+          className="mb-4 rounded-md p-2"
           required={true}
           maxLength={50}
         />
@@ -99,7 +99,7 @@ export default function GuestBookPage() {
           onChange={(event) => setMessage(event.target.value)}
           placeholder="Message"
           disabled={formDisabled || isSaving}
-          className="rounded-sm p-1.5 mb-4"
+          className="rounded-md p-2 mb-4"
           required={true}
           maxLength={50}
         />
@@ -124,8 +124,11 @@ export default function GuestBookPage() {
 
               return setMessageType(type)
             }}
+            className="hover:cursor-pointer"
           />
-          <label htmlFor={MessageType.private}>Private message</label>
+          <label htmlFor={MessageType.private} className="hover: cursor-pointer">
+            Private message
+          </label>
         </div>
 
         <button type="submit" disabled={formDisabled || isSaving} className="p-3 rounded-md font-semibold">

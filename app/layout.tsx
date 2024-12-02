@@ -34,10 +34,18 @@ export default function RootLayout({
         </main>
 
         <footer className="flex justify-center py-6 px-2 space-x-6">
-          <Link href="/">/</Link>
-          <Link href="/experience">/experience</Link>
-          <Link href="/projects">/projects</Link>
-          <Link href="/guest-book">/guests</Link>
+          <Link className="text-anchor-alt visited:text-anchor-visited-alt" href="/">
+            /
+          </Link>
+          <Link className="text-anchor-alt visited:text-anchor-visited-alt" href="/experience">
+            /experience
+          </Link>
+          <Link className="text-anchor-alt visited:text-anchor-visited-alt" href="/projects">
+            /projects
+          </Link>
+          <Link className="text-anchor-alt visited:text-anchor-visited-alt" href="/guest-book">
+            /guests
+          </Link>
         </footer>
       </body>
     </html>
