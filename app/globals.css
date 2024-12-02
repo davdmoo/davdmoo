@@ -40,6 +40,14 @@
     background-color: #957fb8;
     color: #1f1f28;
     border: 1px solid #7e68a3;
+    cursor: pointer;
+  }
+
+  button:disabled {
+    background-color: #3b4261;
+    color: #727169;
+    border: 1px solid #2a2d3a;
+    cursor: not-allowed;
   }
 }
 

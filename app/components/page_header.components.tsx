@@ -5,5 +5,5 @@ export default function PageHeader({ title, subtitle }: { title: string; subtitl
       <p>{subtitle}</p>
       <hr className="my-6 w-full" />
     </div>
-  );
+  )
 }

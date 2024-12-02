@@ -8,5 +8,5 @@ export default function CodeBlock({ codeSnippet, language }: { codeSnippet: stri
         <code className="block w-full">{codeSnippet}</code>
       </pre>
     </div>
-  );
+  )
 }
