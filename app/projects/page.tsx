@@ -19,10 +19,7 @@ Start-Process –FilePath "$filePath" –Verb Print
 
   return (
     <div className="flex flex-col items-center">
-      <PageHeader
-        title="/projects"
-        subtitle="A short list of side projects and what I think about them in retrospect"
-      />
+      <PageHeader title="/projects" />
 
       <div className="flex flex-col items-start w-full text-justify">
         <h2 className="text-xl mb-2 font-bold">Invoice Management App</h2>

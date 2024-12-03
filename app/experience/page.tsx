@@ -4,7 +4,7 @@ import PageHeader from "../components/page_header.components"
 export default function WorkSummary() {
   return (
     <div className="flex flex-col items-center text-justify justify-center">
-      <PageHeader title="/experience" subtitle="" />
+      <PageHeader title="/experience" />
       <div className="flex flex-col items-start w-full">
         <h2 className="">
           Staff Programmer at{" "}

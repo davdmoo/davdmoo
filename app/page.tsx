@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <div className="text-justify">
-      <PageHeader title="/" subtitle="" />
+      <PageHeader title="/" />
 
       <h2>About</h2>
       <p>
