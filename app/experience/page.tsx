@@ -20,7 +20,8 @@ export default function WorkSummary() {
         <p className="mb-4">
           <em>(February 2022 - present)</em>
         </p>
-        <ul className="list-disc">
+
+        <ul className="list-disc pl-3">
           <li>
             Develop, maintain, and deploy a self-service bus ticketing platform using Flutter and Javascript, serving up
             to 90,000 transactions per month in Soekarno-Hatta airport
@@ -38,6 +39,7 @@ export default function WorkSummary() {
           <li>Develop integrations with third party systems</li>
           <li>Develop unit tests using Jest</li>
         </ul>
+
         <p className="mt-3">
           <strong>Tech stacks</strong>: Flutter, Typescript, Javascript, Firestore NoSQL, MongoDB, CI/CD with GitHub
           Actions, Firebase Cloud Messaging, Google Cloud Functions, Google Cloud Platform (GCP)
@@ -46,7 +48,7 @@ export default function WorkSummary() {
         <hr className="my-6 w-full" />
 
         <h2 className="">Freelance Full Stack Developer</h2>
-        <ul className="list-disc">
+        <ul className="list-disc pl-3">
           <li>Successfully developed 1 project for a client in the retail industry</li>
           <li>Developed a Windows-based invoice and stock management app using Flutter, Typescript, and MongoDB</li>
           <li>
