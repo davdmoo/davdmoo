@@ -138,10 +138,10 @@ export default function GuestBookPage() {
 
       <dialog ref={dialog} className="rounded p-4 bg-foreground">
         <div className="flex flex-col items-end">
-          <h2 className="text-background">Your message has been sent!</h2>
+          <h2>Your message has been sent!</h2>
           <button
             onClick={() => closeDialog(dialog)}
-            className="mt-2 p-2 bg-transparent border-0 rounded text-background"
+            className="mt-2 p-2 bg-transparent border-0 rounded text-background text-sm lg:text-base md:text-base"
           >
             Close
           </button>

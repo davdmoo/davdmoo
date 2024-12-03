@@ -22,7 +22,7 @@ export default function ThemeSwitcher() {
         ThemeLogic.setCurrentTheme(newTheme)
         setTheme(newTheme)
       }}
-      className="bg-transparent border-0 rounded-full p-1"
+      className="bg-transparent border-0 rounded-full p-2"
     >
       {theme === ThemeValue.dark ? <SunlightIcon /> : <MoonIcon />}
     </button>

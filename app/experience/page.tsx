@@ -6,9 +6,14 @@ export default function WorkSummary() {
     <div className="flex flex-col items-center text-justify justify-center">
       <PageHeader title="/experience" />
       <div className="flex flex-col items-start w-full">
-        <h2 className="">
+        <h2>
           Staff Programmer at{" "}
-          <Link href="https://qios-id.com" target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://qios-id.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xl md:text-2xl lg:text-2xl"
+          >
             Qios
           </Link>
         </h2>

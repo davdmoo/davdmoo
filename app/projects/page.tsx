@@ -85,7 +85,7 @@ Start-Process –FilePath "$filePath" –Verb Print
           HTMX is a different take on what I am used to seeing/building in terms of clients and servers&apos;
           interactions. I learned about how REST was originally designed to{" "}
           <Link
-            href="https://https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/"
+            href="https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/"
             target="_blank"
             rel="noopener noreferrer"
           >

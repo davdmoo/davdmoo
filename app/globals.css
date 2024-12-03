@@ -15,6 +15,14 @@
     @apply text-sm md:text-base lg:text-base mb-2;
   }
 
+  em {
+    @apply text-sm md:text-base lg:text-base mb-2;
+  }
+
+  ul {
+    @apply text-sm md:text-base lg:text-base mb-2;
+  }
+
   a {
     @apply text-sm md:text-base lg:text-base text-anchor hover:underline hover:text-anchor-visited font-semibold;
   }
@@ -102,4 +110,5 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  transition: all 0.5s ease;
 }
