@@ -4,31 +4,27 @@
 
 @layer base {
   h1 {
-    @apply text-4xl;
-    @apply font-bold;
+    @apply text-2xl lg:text-4xl md:text-4xl font-bold;
   }
 
   h2 {
-    @apply text-2xl;
-    @apply font-semibold;
-    @apply mb-2;
+    @apply text-xl lg:text-2xl md:text-2xl font-semibold mb-2;
   }
 
   p {
-    @apply text-base;
-    @apply mb-2;
+    @apply text-sm md:text-base lg:text-base mb-2;
   }
 
   a {
-    @apply text-anchor hover:underline hover:text-anchor-visited;
+    @apply text-sm md:text-base lg:text-base text-anchor hover:underline hover:text-anchor-visited font-semibold;
   }
 
   a:visited {
-    @apply text-anchor-visited hover:underline;
+    @apply text-sm md:text-base lg:text-base text-anchor-visited hover:underline;
   }
 
   a:active {
-    @apply text-anchor-visited hover:underline;
+    @apply text-sm md:text-base lg:text-base text-anchor-visited hover:underline;
   }
 
   pre {
@@ -40,13 +36,12 @@
   }
 
   input {
-    /* background-color: #363646; */
     @apply bg-input-background;
     border: 1px solid var(--input-border);
   }
 
   button {
-    @apply bg-button-background hover:bg-button-hover cursor-pointer;
+    @apply bg-button-background text-background dark:text-foreground hover:bg-button-hover cursor-pointer;
     border: 1px solid var(--button-border);
   }
 
@@ -54,16 +49,46 @@
     @apply bg-disabled text-disabled-foreground cursor-not-allowed;
     border: 1px solid var(--disabled-foreground);
   }
+
+  svg {
+    @apply text-foreground;
+  }
+
+  svg path {
+    @apply stroke-foreground;
+  }
+
+  hr {
+    @apply text-disabled bg-disabled border-disabled h-0.5;
+  }
 }
 
 :root {
-  --background: #DCD7BA;
+  --background: #F1F1F1;
+  --dark-background: #2E2E2E;
+  --lighter-background: #E0E0E0;
+  --foreground: #2E2E2E;
+  --anchor: #658594;
+  --anchor-alt: #C34043;
+  --anchor-visited: #C34043;
+  --anchor-visited-alt: #E82424;
+  --input-background: #F1F1F1;
+  --input-border: #D1D5DB;
+  --button-background: #6C7D57;
+  --button-hover: #7C8E69;
+  --button-border: #6C7D57;
+  --disabled: #D1D5DB;
+  --disabled-foreground: #9CA3AF;
+}
+
+.dark {
+  --background: #1F1F28;
   --lighter-background: #363646;
-  --foreground: #1F1F28;
-  --anchor: #7E9CD8;
-  --anchor-alt: #E6C384;
-  --anchor-visited: #2D4F67;
-  --anchor-visited-alt: #FFA066;
+  --foreground: #DCD7BA;
+  --anchor: #658594;
+  --anchor-alt: #C34043;
+  --anchor-visited: #C34043;
+  --anchor-visited-alt: #E82424;
   --input-background: #1f1f28;
   --input-border: #54546d;
   --button-background: #6a9589;
@@ -71,13 +96,6 @@
   --button-border: #76946a;
   --disabled: #54546d;
   --disabled-foreground: #727169;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1F1F28;
-    --foreground: #DCD7BA;
-  }
 }
 
 body {

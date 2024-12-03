@@ -135,8 +135,6 @@ Start-Process –FilePath "$filePath" –Verb Print
         </p>
 
         <CodeBlock codeSnippet={htmxCodeSnippet} language="htmx" />
-
-        {/* <hr className="mt-6 w-full" /> */}
       </div>
     </div>
   )

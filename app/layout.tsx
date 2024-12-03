@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import Link from "next/link"
+import LayoutHeader from "./components/layout_header.components"
 import "./globals.css"
 
 const geistSans = localFont({
@@ -16,7 +17,10 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "/davdmoo",
-  description: "Personal site built using Next.js and Tailwind",
+  description:
+    "Personal site of David Mulyawan Oktavianus, a software developer specialized in Flutter, React, and Typescript",
+  authors: [{ name: "David Mulyawan Oktavianus", url: "https://davdmoo.vercel.app" }],
+  creator: "David Mulyawan Oktavianus",
 }
 
 export default function RootLayout({
@@ -25,15 +29,20 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script src="/scripts/theme.js"></script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col justify-between px-4`}
       >
-        <main className="flex-grow flex flex-col items-center py-12">
-          <div className="lg:max-w-2xl md:max-w-2xl w-full">{children}</div>
+        <LayoutHeader />
+
+        <main className="flex-grow flex flex-col items-center my-4">
+          <div className="lg:max-w-2xl md:max-w-2xl w-full mb-4">{children}</div>
         </main>
 
-        <footer className="flex justify-center py-6 px-2 space-x-6">
+        <footer className="flex justify-center py-4 px-2 space-x-6">
           <Link className="text-anchor-alt visited:text-anchor-visited-alt" href="/">
             /
           </Link>
