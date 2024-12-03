@@ -22,7 +22,7 @@ Start-Process –FilePath "$filePath" –Verb Print
       <PageHeader title="/projects" />
 
       <div className="flex flex-col items-start w-full text-justify">
-        <h2 className="text-xl mb-2 font-bold">Invoice Management App</h2>
+        <h2>Invoice Management App</h2>
         <p>
           This was a Windows application I built using Flutter and Typescript. Features include authentication, sales
           and product shipments&apos; invoice generation, along with sales data, customer, product, and stock
@@ -53,12 +53,15 @@ Start-Process –FilePath "$filePath" –Verb Print
 
         <hr className="my-6 w-full" />
 
-        <h2 className="text-xl mb-2 font-bold">
-          <Link href="https://slinks.deno.dev" target="_blank" rel="noopener noreferrer">
-            Slinks
-          </Link>
-        </h2>
-        <Link href="https://github.com/davdmoo/slinks" target="_blank" rel="noopener noreferrer" className="mb-4">
+        <Link
+          href="https://slinks.deno.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xl lg:text-2xl md:text-2xl font-semibold"
+        >
+          Slinks
+        </Link>
+        <Link href="https://github.com/davdmoo/slinks" target="_blank" rel="noopener noreferrer" className="mb-2">
           <em>Code base</em>
         </Link>
         <p>
@@ -113,12 +116,15 @@ Start-Process –FilePath "$filePath" –Verb Print
 
         <hr className="my-6 w-full" />
 
-        <h2 className="text-xl mb-2 font-bold">
-          <Link href="https://dictionary-htmx.deno.dev" target="_blank" rel="noopener noreferrer">
-            Dictionary
-          </Link>
-        </h2>
-        <Link href="https://github.com/davdmoo/dictionary" target="_blank" rel="noopener noreferrer" className="mb-4">
+        <Link
+          href="https://dictionary-htmx.deno.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xl lg:text-2xl md:text-2xl font-semibold"
+        >
+          Dictionary
+        </Link>
+        <Link href="https://github.com/davdmoo/dictionary" target="_blank" rel="noopener noreferrer" className="mb-2">
           <em>Code base</em>
         </Link>
         <p>
