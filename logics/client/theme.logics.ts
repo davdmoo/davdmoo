@@ -3,10 +3,8 @@ export enum ThemeValue {
   dark = "dark",
 }
 
-let instance: ThemeLogic | undefined
-
 export default class ThemeLogic {
-  getCurrentTheme(): ThemeValue {
+  static getCurrentTheme(): ThemeValue {
     const theme = localStorage.getItem("theme")
     if (theme === null) {
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -19,16 +17,8 @@ export default class ThemeLogic {
     return theme as ThemeValue
   }
 
-  setCurrentTheme(value: ThemeValue) {
+  static setCurrentTheme(value: ThemeValue) {
     localStorage.setItem("theme", value)
     document.documentElement.classList.toggle(ThemeValue.dark)
-  }
-
-  contructor() {
-    if (!instance) {
-      instance = this
-    }
-
-    return instance
   }
 }

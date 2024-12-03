@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import Link from "next/link"
+import Script from "next/script"
 import LayoutHeader from "./components/layout_header.components"
 import "./globals.css"
 
@@ -31,8 +32,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script src="/scripts/theme.js"></script>
+        <Script src="/scripts/theme.js"></Script>
       </head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col justify-between px-4`}
       >

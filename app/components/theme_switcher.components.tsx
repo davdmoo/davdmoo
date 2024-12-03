@@ -7,20 +7,19 @@ import SunlightIcon from "./sunlight_icon.components"
 
 export default function ThemeSwitcher() {
   const [theme, setTheme] = useState<ThemeValue>(ThemeValue.dark)
-  const themeLogic = new ThemeLogic()
 
   useEffect(() => {
-    const currentTheme = themeLogic.getCurrentTheme()
+    const currentTheme = ThemeLogic.getCurrentTheme()
     setTheme(currentTheme)
   }, [])
 
   return (
     <button
       onClick={() => {
-        const currentTheme = themeLogic.getCurrentTheme()
+        const currentTheme = ThemeLogic.getCurrentTheme()
         const newTheme = currentTheme === ThemeValue.light ? ThemeValue.dark : ThemeValue.light
 
-        themeLogic.setCurrentTheme(newTheme)
+        ThemeLogic.setCurrentTheme(newTheme)
         setTheme(newTheme)
       }}
       className="bg-transparent border-0 rounded-full p-1"
