@@ -10,8 +10,8 @@ export default function Analytics() {
   useEffect(() => {
     logPageVisit(pathname)
 
-    window?.addEventListener("close", (event) => {
-      logPageVisit(pathname)
+    window?.addEventListener("close", () => {
+      // TODO: log event
     })
   }, [pathname])
 

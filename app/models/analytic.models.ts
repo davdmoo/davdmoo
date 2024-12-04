@@ -3,15 +3,15 @@ import { Row } from "@libsql/client"
 
 export default class Analytic {
   id
-  pathname
+  pathId
   visitorId
   referrer
   userAgent
   timestamp
 
-  constructor(id: number, pathname: string, visitorId: string, referrer: string, userAgent: string, timestamp: string) {
+  constructor(id: number, pathId: number, visitorId: string, referrer: string, userAgent: string, timestamp: string) {
     this.id = id
-    this.pathname = pathname
+    this.pathId = pathId
     this.visitorId = visitorId
     this.referrer = referrer
     this.userAgent = userAgent
@@ -22,12 +22,12 @@ export default class Analytic {
     if (row === null) throw new ValidationError("Row is null")
 
     const id = row["id"] as number
-    const pathname = row["pathname"] as string
+    const pathId = row["path_id"] as number
     const visitorId = row["visitor_id"] as string
     const referrer = row["referrer"] as string
     const userAgent = row["user_agent"] as string
     const timestamp = row["timestamp"] as string
 
-    return new Analytic(id, pathname, visitorId, referrer, userAgent, timestamp)
+    return new Analytic(id, pathId, visitorId, referrer, userAgent, timestamp)
   }
 }

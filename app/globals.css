@@ -47,6 +47,14 @@
     @apply bg-input-background;
     border: 1px solid var(--input-border);
   }
+  
+  label {
+    @apply font-semibold;
+  }
+  
+  label {
+    @apply font-semibold;
+  }
 
   button {
     @apply bg-button-background text-background dark:text-foreground hover:bg-button-hover cursor-pointer;
