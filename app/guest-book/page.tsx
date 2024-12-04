@@ -72,7 +72,7 @@ export default function GuestBookPage() {
       <PageHeader title="/guest-book" subtitle="Leave a message!" />
 
       <form action="/api/guest-messages" method="post" onSubmit={submitForm} className="flex flex-col mb-2">
-        <label htmlFor="name" className="mb-1">
+        <label htmlFor="name" className="mb-1 font-semibold">
           Name
         </label>
         <input

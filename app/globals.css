@@ -35,6 +35,14 @@
     background-color: #2a2d3a;
     border: 1px solid #3b4261;
   }
+  
+  label {
+    @apply font-semibold;
+  }
+  
+  label {
+    @apply font-semibold;
+  }
 
   button {
     background-color: #957fb8;
