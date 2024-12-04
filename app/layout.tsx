@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import localFont from "next/font/local"
 import Link from "next/link"
 import Script from "next/script"
+import Analytics from "./components/analytics.components"
 import LayoutHeader from "./components/layout_header.components"
 import "./globals.css"
 
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col justify-between px-4`}
       >
+        <Analytics />
         <LayoutHeader />
 
         <main className="flex-grow flex flex-col items-center my-4">
