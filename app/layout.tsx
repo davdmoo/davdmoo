@@ -35,6 +35,13 @@ export default function RootLayout({
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <Script src="/scripts/theme.js"></Script>
+        {process.env.NODE_ENV === "production" ? (
+          <script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id="26b22b57-79e1-4b46-8e27-041da60705f9"
+          ></script>
+        ) : null}
       </head>
 
       <body
