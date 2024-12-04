@@ -69,6 +69,10 @@
   hr {
     @apply text-disabled bg-disabled border-disabled h-0.5;
   }
+
+  dialog {
+    @apply rounded p-4 bg-lighter-background text-foreground drop-shadow-2xl;
+  }
 }
 
 :root {
