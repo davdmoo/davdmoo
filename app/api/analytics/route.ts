@@ -1,9 +1,13 @@
+import Browser from "@/app/models/browser.models"
+import Device from "@/app/models/device.models"
+import OperatingSystem from "@/app/models/operating_system.models"
 import Path from "@/app/models/path.models"
 import NotFoundError from "@/errors/not_found.errors"
 import ValidationError from "@/errors/validation.errors"
 import database from "@/utils/database"
 import { Transaction } from "@libsql/client"
 import * as Sentry from "@sentry/nextjs"
+import { UAParser } from "ua-parser-js"
 
 export async function POST(request: Request) {
   let transaction: Transaction | undefined
@@ -15,16 +19,43 @@ export async function POST(request: Request) {
       throw new ValidationError("Invalid request body")
     }
 
+    const parsedUserAgent = UAParser(userAgent)
+    const browser = Browser.fromJson(parsedUserAgent.browser as unknown as Record<string, unknown>)
+    const operatingSystem = OperatingSystem.fromJson(parsedUserAgent.os as unknown as Record<string, unknown>)
+    const device = Device.fromJson(parsedUserAgent.device as unknown as Record<string, unknown>)
+
     const db = database()
     transaction = await db.transaction("write")
+
+    // insert new browser, OS, and device if they don't exist yet
+    await transaction.batch([
+      `insert or ignore into browser (name, version) values ('${browser.name}', '${browser.version}');`,
+      `insert or ignore into operating_system (name, version) values ('${operatingSystem.name}', '${operatingSystem.version}');`,
+      `insert or ignore into device (type, vendor, model) values ('${device.type}', '${device.vendor}', '${device.model}');`,
+    ])
+
+    // query existing/newly added browser, OS, and device to be added into analytic item
+    const existingBrowserQuery = await transaction.execute(
+      `select * from browser where name = '${browser.name}' and version = '${browser.version}' limit 1;`
+    )
+    const existingBrowser = Browser.fromDb(existingBrowserQuery.rows.at(0))
+
+    const existingOsQuery = await transaction.execute(
+      `select * from operating_system where name = '${operatingSystem.name}' and version = '${operatingSystem.version}' limit 1;`
+    )
+    const existingOs = OperatingSystem.fromDb(existingOsQuery.rows.at(0))
+
+    const existingDeviceQuery = await transaction.execute(
+      `select * from device where type = '${device.type}' and vendor = '${device.vendor}' and model = '${device.model}' limit 1;`
+    )
+    const existingDevice = OperatingSystem.fromDb(existingDeviceQuery.rows.at(0))
+
     const pathQuery = await transaction.execute({
       sql: `select * from path where name = ? limit 1`,
       args: [pathname],
     })
-    const pathRow = pathQuery.rows.at(0)
-    if (!pathRow) throw new NotFoundError("Path not found")
-
-    const path = Path.fromDb(pathRow)
+    const path = Path.fromDb(pathQuery.rows.at(0))
+    if (!path) throw new NotFoundError("Path not found")
 
     // check if current visitor is unique
     const uniqueAnalyticQuery = await transaction.execute({
@@ -41,8 +72,8 @@ export async function POST(request: Request) {
     // update path's visit count and create new analytic data
     await transaction.batch([
       {
-        sql: `insert into analytic(path_id, referrer, user_agent, visitor_id) values(?, ?, ?, ?)`,
-        args: [path.id, referrer, userAgent, visitorId],
+        sql: `insert into analytic(path_id, browser_id, os_id, device_id, referrer, user_agent, visitor_id) values(?, ?, ?, ?, ?, ?, ?)`,
+        args: [path.id, existingBrowser!.id, existingOs!.id, existingDevice!.id, referrer, userAgent, visitorId],
       },
       {
         sql: `update path set visit_count = ?, unique_visit_count = ? where id = ?`,
@@ -53,7 +84,9 @@ export async function POST(request: Request) {
     await transaction.commit()
     return Response.json({ message: "Success", data: null }, { status: 201 })
   } catch (err) {
-    Sentry.captureException(err)
+    if (process.env.NODE_ENV === "production") {
+      Sentry.captureException(err)
+    }
     await transaction?.rollback()
 
     let errorMessage = "Internal error occurred. Please try again later."

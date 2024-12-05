@@ -1,4 +1,3 @@
-import ValidationError from "@/errors/validation.errors"
 import { Row } from "@libsql/client"
 
 export default class Path {
@@ -25,8 +24,8 @@ export default class Path {
     this.updatedAt = updatedAt
   }
 
-  static fromDb(row: Row | null | undefined): Path {
-    if (row === null || row === undefined) throw new ValidationError("Row is null")
+  static fromDb(row: Row | null | undefined) {
+    if (!row) return null
 
     const id = row["id"] as number
     const name = row["name"] as string

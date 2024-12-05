@@ -56,7 +56,9 @@ export async function POST(request: NextRequest) {
     const response = GuestMessage.fromDb(row)
     return Response.json({ message: "Success", data: response }, { status: 201 })
   } catch (err) {
-    Sentry.captureException(err)
+    if (process.env.NODE_ENV === "production") {
+      Sentry.captureException(err)
+    }
 
     let errorMessage = "Internal error occurred. Please try again later."
     let status = 500
@@ -80,7 +82,9 @@ export async function GET() {
     const guestMessages = queryResult.rows.map((row) => GuestMessage.fromDb(row))
     return Response.json({ message: "Success", data: guestMessages })
   } catch (err) {
-    Sentry.captureException(err)
+    if (process.env.NODE_ENV === "production") {
+      Sentry.captureException(err)
+    }
 
     let errorMessage = "Internal error occurred. Please try again later."
     if (err instanceof Error) {

@@ -1,32 +1,21 @@
+// split user agent into browser, device, and OS and update the analytic's table
+
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const libsql = require("@libsql/client")
 
-// setup local DB
-const db = libsql.createClient({
-  url: "file:local.db",
-})
+const url = "file:local.db"
+const db = libsql.createClient({ url: url })
 
-async function bootstrap() {
-  console.log("bootstrapping local DB..")
+async function migration() {
+  console.log("starting migration..")
 
   try {
     await db.executeMultiple(`
       begin transaction;
 
-      drop table if exists analytic;
-      drop table if exists path;
       drop table if exists browser;
       drop table if exists operating_system;
       drop table if exists device;
-
-      create table path (
-        id integer primary key not null,
-        name text not null,
-        visit_count integer not null default 0,
-        unique_visit_count integer not null default 0,
-        created_at timestamp default current_timestamp,
-        updated_at timestamp default current_timestamp
-      );
 
       create table browser (
         id integer primary key not null,
@@ -50,12 +39,16 @@ async function bootstrap() {
         unique(type, vendor, model)
       );
 
-      create table analytic (
+      insert into browser (id, name, version) values (1, 'Firefox', '133.0');
+      insert into operating_system (id, name, version) values (1, 'Windows', '10');
+      insert into device (id, type, vendor, model) values (1, '', '', '');
+
+      create table analytic_new (
         id integer primary key not null,
         path_id integer not null,
-        browser_id integer,
-        os_id integer,
-        device_id integer,
+        browser_id integer not null,
+        os_id integer not null,
+        device_id integer not null,
         visitor_id text not null,
         referrer text not null,
         user_agent text not null,
@@ -74,17 +67,22 @@ async function bootstrap() {
           on delete cascade
       );
 
-      insert into path (name) values ('/');
-      insert into path (name) values ('/experience');
-      insert into path (name) values ('/projects');
-      insert into path (name) values ('/guest-book');
+      insert into analytic_new (id, path_id, browser_id, os_id, device_id, visitor_id, referrer, user_agent, timestamp)
+        select id, path_id, 1 as browser_id, 1 as os_id, 1 as device_id, visitor_id, referrer, user_agent, timestamp from analytic;
+      alter table analytic
+        rename to analytic_old;
+      drop table analytic_old;
+      alter table analytic_new
+        rename to analytic;
 
       commit;
     `)
 
-    console.log("bootstrapping successful")
+    console.log("migration successful - closing DB connection..")
+    db.close()
+    console.log("DB connection closed")
   } catch (err) {
-    console.error(err, "< Error")
+    console.error(err, "<<< Error")
 
     if (err instanceof libsql.LibsqlError) {
       console.error(err.stack, "<<< Libsql Error")
@@ -92,4 +90,4 @@ async function bootstrap() {
   }
 }
 
-bootstrap()
+migration()
