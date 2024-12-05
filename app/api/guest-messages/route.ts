@@ -72,12 +72,9 @@ export async function POST(request: NextRequest) {
 export async function GET() {
   try {
     const db = database()
-    const queryResult = await db.execute("select * from guest_message")
+    const queryResult = await db.execute("select * from guest_message order by created_at desc;")
 
     const guestMessages = queryResult.rows.map((row) => GuestMessage.fromDb(row))
-
-    //sort the data by latest ID
-    guestMessages.sort((a, b) => b.id - a.id)
     return Response.json({ message: "Success", data: guestMessages })
   } catch (err) {
     let errorMessage = "Internal error occurred. Please try again later."

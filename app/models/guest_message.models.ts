@@ -1,4 +1,3 @@
-import DataTypeError from "@/errors/data_type.errors"
 import ValidationError from "@/errors/validation.errors"
 import { Row } from "@libsql/client"
 
@@ -7,38 +6,35 @@ export default class GuestMessage {
   message
   visitorId
   visitorName
+  createdAt
+  updatedAt
 
-  constructor(id: number, message: string, visitorId: string, visitorName: string) {
+  constructor(
+    id: number,
+    message: string,
+    visitorId: string,
+    visitorName: string,
+    createdAt: string,
+    updatedAt: string
+  ) {
     this.id = id
     this.message = message
     this.visitorId = visitorId
     this.visitorName = visitorName
+    this.createdAt = createdAt
+    this.updatedAt = updatedAt
   }
 
   static fromDb(row: Row): GuestMessage {
-    if (row.length !== 4 || row === null) throw new ValidationError("Invalid row length")
+    if (row.length !== 6 || row === null) throw new ValidationError("Invalid row length")
 
-    const id = row["id"]
-    const message = row["message"]
-    const visitorId = row["visitor_id"]
-    const visitorName = row["visitor_name"]
+    const id = row["id"] as number
+    const message = row["message"] as string
+    const visitorId = row["visitor_id"] as string
+    const visitorName = row["visitor_name"] as string
+    const createdAt = row["created_at"] as string
+    const updatedAt = row["updated_at"] as string
 
-    if (typeof id !== "number") {
-      throw new DataTypeError(`ID (${id}) must be of type number`)
-    }
-
-    if (typeof message !== "string") {
-      throw new DataTypeError(`Message (${message}) must be of type string`)
-    }
-
-    if (typeof visitorId !== "string") {
-      throw new DataTypeError(`Visitor ID (${visitorId}) must be of type string`)
-    }
-
-    if (typeof visitorName !== "string") {
-      throw new DataTypeError(`Visitor ID (${visitorName}) must be of type string`)
-    }
-
-    return new GuestMessage(id, message, visitorId, visitorName)
+    return new GuestMessage(id, message, visitorId, visitorName, createdAt, updatedAt)
   }
 }

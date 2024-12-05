@@ -23,16 +23,29 @@ export async function POST(request: Request) {
     const pathRow = pathQuery.rows.at(0)
     if (!pathRow) throw new NotFoundError("Path not found")
 
-    // update path's visit count and create new analytic data
     const path = Path.fromDb(pathRow)
+
+    // check if current visitor is unique
+    const uniqueAnalyticQuery = await transaction.execute({
+      sql: `select * from analytic where path_id = ? and visitor_id = ? limit 1`,
+      args: [path.id, visitorId],
+    })
+    const uniqueAnalyticRow = uniqueAnalyticQuery.rows.at(0)
+
+    let uniqueVisitCount = path.uniqueVisitCount
+    if (!uniqueAnalyticRow) {
+      uniqueVisitCount = path.uniqueVisitCount + 1
+    }
+
+    // update path's visit count and create new analytic data
     await transaction.batch([
       {
         sql: `insert into analytic(path_id, referrer, user_agent, visitor_id) values(?, ?, ?, ?)`,
         args: [path.id, referrer, userAgent, visitorId],
       },
       {
-        sql: `update path set visit_count = ? where id = ?`,
-        args: [path.visitCount + 1, path.id],
+        sql: `update path set visit_count = ?, unique_visit_count = ? where id = ?`,
+        args: [path.visitCount + 1, uniqueVisitCount, path.id],
       },
     ])
 
@@ -43,6 +56,7 @@ export async function POST(request: Request) {
 
     let errorMessage = "Internal error occurred. Please try again later."
     if (err instanceof Error) {
+      console.error(err.stack)
       errorMessage = err.message
     }
 
@@ -54,8 +68,8 @@ export async function POST(request: Request) {
 //   try {
 //     const db = database()
 //     const queryResult = await db.execute({
-//       sql: `select * from analytic where visitor_id = ? and path_id = ?`,
-//       args: ["deb583af636126dbcb6f97c714df13bd", 1],
+//       sql: `select * from analytic`,
+//       args: [],
 //     })
 
 //     return Response.json({ message: "Success", data: queryResult.rows.map((row) => Analytic.fromDb(row)) })

@@ -6,8 +6,9 @@ const db = libsql.createClient({
   url: "file:local.db",
 })
 
-async function setup() {
-  console.log("setting up..")
+async function bootstrap() {
+  console.log("bootstrapping local DB..")
+
   try {
     await db.executeMultiple(`
       drop table if exists analytic;
@@ -29,19 +30,22 @@ async function setup() {
         timestamp timestamp default current_timestamp,
         foreign key (path_id)
           references path (id)
+          on delete cascade
       );
       insert into path (name) values ('/');
       insert into path (name) values ('/experience');
       insert into path (name) values ('/projects');
       insert into path (name) values ('/guest-book');
     `)
-    console.log("local DB has been set up")
+
+    console.log("bootstrapping successful")
   } catch (err) {
     console.error(err, "< Error")
+
     if (err instanceof libsql.LibsqlError) {
-      console.error(err.stack)
+      console.error(err.stack, "<<< Libsql Error")
     }
   }
 }
 
-setup()
+bootstrap()

@@ -15,6 +15,7 @@ export default async function logPageVisit(pathname: string) {
     userAgent: navigator.userAgent,
     visitorId: fingerprint,
   }
-  const beaconResult = navigator.sendBeacon("/api/analytics", JSON.stringify(body))
-  console.info(beaconResult, "<<<")
+
+  // send analytics using beacon since we don't need to listen to the results
+  navigator.sendBeacon("/api/analytics", JSON.stringify(body))
 }
