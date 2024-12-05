@@ -10,6 +10,13 @@ export default function Analytics() {
   useEffect(() => {
     logPageVisit(pathname)
 
+    // set session_id
+    const currentSession = window.sessionStorage.getItem("session_id")
+    if (currentSession === null) {
+      const uuid = crypto.randomUUID()
+      window.sessionStorage.setItem("session_id", uuid)
+    }
+
     window?.addEventListener("close", () => {
       // TODO: log event
     })
