@@ -3,6 +3,7 @@ import NotFoundError from "@/errors/not_found.errors"
 import ValidationError from "@/errors/validation.errors"
 import database from "@/utils/database"
 import { Transaction } from "@libsql/client"
+import * as Sentry from "@sentry/nextjs"
 
 export async function POST(request: Request) {
   let transaction: Transaction | undefined
@@ -52,6 +53,7 @@ export async function POST(request: Request) {
     await transaction.commit()
     return Response.json({ message: "Success", data: null }, { status: 201 })
   } catch (err) {
+    Sentry.captureException(err)
     await transaction?.rollback()
 
     let errorMessage = "Internal error occurred. Please try again later."

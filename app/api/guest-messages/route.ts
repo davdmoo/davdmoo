@@ -3,6 +3,7 @@ import { MessageType } from "@/enums/message_type.enums"
 import EnvError from "@/errors/env.errors"
 import ValidationError from "@/errors/validation.errors"
 import database from "@/utils/database"
+import * as Sentry from "@sentry/nextjs"
 import { NextRequest } from "next/server"
 
 export async function POST(request: NextRequest) {
@@ -55,6 +56,8 @@ export async function POST(request: NextRequest) {
     const response = GuestMessage.fromDb(row)
     return Response.json({ message: "Success", data: response }, { status: 201 })
   } catch (err) {
+    Sentry.captureException(err)
+
     let errorMessage = "Internal error occurred. Please try again later."
     let status = 500
     if (err instanceof Error) {
@@ -77,6 +80,8 @@ export async function GET() {
     const guestMessages = queryResult.rows.map((row) => GuestMessage.fromDb(row))
     return Response.json({ message: "Success", data: guestMessages })
   } catch (err) {
+    Sentry.captureException(err)
+
     let errorMessage = "Internal error occurred. Please try again later."
     if (err instanceof Error) {
       errorMessage = err.message
