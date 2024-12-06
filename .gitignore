@@ -40,7 +40,7 @@ yarn-error.log*
 next-env.d.ts
 
 # development database
-local.db
+local.db*
 
 # Sentry Config File
 .env.sentry-build-plugin

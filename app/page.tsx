@@ -40,9 +40,9 @@ export default function Home() {
         allowed me to develop unique set of skills and taking full ownership of several impactful projects.
       </p>
       <p>
-        One of my proudest achievements was developing a self-service bus ticketing platform that processes up to 90,000
-        transactions per month. This was my first professional project and also the first one using Flutter; a tool I
-        had to learn during my first month here.
+        One of my proudest achievements was developing a self-service bus ticketing platform that processes tens of
+        thousands of transactions per month. This was my first professional project and also the first one using
+        Flutter; a tool I had to learn during my first month here.
       </p>
       <p>
         Some exciting features I worked on during this project were QRIS and EDC payment integration, communicating with

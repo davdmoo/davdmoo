@@ -1,11 +1,11 @@
 import { getFingerprint } from "@thumbmarkjs/thumbmarkjs"
 
 export default async function getFingerprintLogic() {
-  const cached = localStorage.getItem("fingerprint")
+  let fingerprint = localStorage.getItem("fingerprint")
 
-  if (!cached) {
+  if (!fingerprint) {
     try {
-      const fingerprint = await getFingerprint()
+      fingerprint = await getFingerprint()
       localStorage.setItem("fingerprint", fingerprint)
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
@@ -13,5 +13,5 @@ export default async function getFingerprintLogic() {
     }
   }
 
-  return localStorage.getItem("fingerprint")
+  return fingerprint
 }

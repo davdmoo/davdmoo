@@ -24,7 +24,7 @@ export default function WorkSummary() {
         <ul className="list-disc pl-3">
           <li>
             Develop, maintain, and deploy a self-service bus ticketing platform using Flutter and Javascript, serving up
-            to 90,000 transactions per month in Soekarno-Hatta airport
+            to tens of thousands of transactions per month in Soekarno-Hatta airport
           </li>
           <li>
             Develop, maintain, and deploy a self-service membership management platform using Flutter and Typescript for

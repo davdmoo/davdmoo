@@ -14,8 +14,8 @@ export async function POST(request: Request) {
 
   try {
     const json = await request.json()
-    const { pathname, referrer, userAgent, visitorId } = json
-    if (!pathname || referrer === undefined || !userAgent || !visitorId) {
+    const { pathname, referrer, userAgent, visitorId, sessionId } = json
+    if (!pathname || referrer === undefined || !userAgent || !visitorId || !sessionId) {
       throw new ValidationError("Invalid request body")
     }
 
@@ -32,6 +32,7 @@ export async function POST(request: Request) {
       `insert or ignore into browser (name, version) values ('${browser.name}', '${browser.version}');`,
       `insert or ignore into operating_system (name, version) values ('${operatingSystem.name}', '${operatingSystem.version}');`,
       `insert or ignore into device (type, vendor, model) values ('${device.type}', '${device.vendor}', '${device.model}');`,
+      `insert or ignore into session (id, visitor_id) values ('${sessionId}', '${visitorId}')`,
     ])
 
     // query existing/newly added browser, OS, and device to be added into analytic item
