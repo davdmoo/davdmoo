@@ -16,11 +16,11 @@ export default function Home() {
       </p>
       <p>
         I have always had curiosity toward all things computer related. I used to tinker with my PC; breaking them apart
-        and putting them back together, messing around with Windows, and at some point, Linux installations, even
-        becoming a source for my friends to ask their PC problems with.
+        and putting them back together, messing around with Windows installations, and even used Linux at some point
+        before I knew anything about it.
       </p>
       <p>
-        That hands-on curiosity made me decide to try to have a career in programming by getting into{" "}
+        This hands-on curiosity made me decide to try to have a career in programming by getting into{" "}
         <Link href="https://hacktiv8.com" target="_blank" rel="noopener noreferrer">
           Hacktiv8&apos;s
         </Link>{" "}
@@ -36,8 +36,9 @@ export default function Home() {
         <Link href="https://qios-id.com" target="_blank" rel="noopener noreferrer">
           Qios
         </Link>
-        , where I became one of the first two programmers in the company. It was quite the challenge, but I believe it
-        allowed me to develop unique set of skills and taking full ownership of several impactful projects.
+        , a company focused in providing self-service systems to FnB, transportation, and service industries. I became
+        one of the first two programmers here, which was quite the challenge, but I believe it gave me the opportunity
+        to develop unique set of skills and taking full ownership of several impactful projects.
       </p>
       <p>
         One of my proudest achievements was developing a self-service bus ticketing platform that processes tens of
@@ -46,8 +47,8 @@ export default function Home() {
       </p>
       <p>
         Some exciting features I worked on during this project were QRIS and EDC payment integration, communicating with
-        the device&apos;s printing hardware using Java and AIDL, and creating a (rather) simple error tracking/debugging
-        tool using Firestore and Crashlytics.
+        the device&apos;s printing hardware using Java and AIDL, seat booking feature, and creating a simple error
+        tracking/debugging tool using Firestore and Crashlytics.
       </p>
 
       <hr className="my-6 w-full" />

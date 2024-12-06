@@ -34,9 +34,8 @@ Start-Process –FilePath "$filePath" –Verb Print
           timelines, and programming the actual software.
         </p>
         <p>
-          Fortunately, I have experience in managing and splitting tasks at work using GitHub Projects (although there
-          was no requirement to do so). This I did since I had found myself being constantly overwhelmed by unclear
-          requirements and tasks.
+          Fortunately, I have experience in managing and splitting tasks at work using GitHub Projects. This I did since
+          I had found myself being constantly overwhelmed by unclear requirements and tasks.
         </p>
         <p>
           The second most challenging part was printing hard copied invoices using dot matrix printers - of which I had
