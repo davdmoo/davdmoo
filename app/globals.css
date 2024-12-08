@@ -47,6 +47,11 @@
     @apply bg-input-background;
     border: 1px solid var(--input-border);
   }
+
+  textarea {
+    @apply bg-input-background;
+    border: 1px solid var(--input-border);
+  }
   
   label {
     @apply font-semibold;

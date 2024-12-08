@@ -91,9 +91,8 @@ export default function GuestBookPage() {
         <label htmlFor="message" className="mb-1">
           Message
         </label>
-        <input
+        <textarea
           id="message"
-          type="text"
           name="message"
           value={message}
           onChange={(event) => setMessage(event.target.value)}
@@ -101,7 +100,7 @@ export default function GuestBookPage() {
           disabled={formDisabled || isSaving}
           className="rounded-md p-2 mb-4"
           required={true}
-          maxLength={50}
+          maxLength={250}
         />
 
         <div
@@ -153,9 +152,9 @@ export default function GuestBookPage() {
       <h2 className="mb-3">Messages</h2>
 
       {messages.map((msg) => (
-        <div key={msg.id} className="flex flex-row">
-          <p className="mr-2 font-semibold text-sm">{msg.visitorName}:</p>
-          <p className="text-sm"> {msg.message}</p>
+        <div key={msg.id} className="flex flex-row space-x-2">
+          <p className="font-semibold text-sm">{msg.visitorName}:</p>
+          <p className="text-sm break-words overflow-hidden"> {msg.message}</p>
         </div>
       ))}
     </div>

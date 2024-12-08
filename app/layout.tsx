@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import Link from "next/link"
-import Script from "next/script"
 import Analytics from "./components/analytics.components"
 import LayoutHeader from "./components/layout_header.components"
 import "./globals.css"
@@ -35,7 +34,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        <Script src="/scripts/theme.js"></Script>
         {process.env.NODE_ENV === "production" ? (
           <script
             defer
