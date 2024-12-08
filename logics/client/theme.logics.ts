@@ -19,6 +19,13 @@ export default class ThemeLogic {
 
   static setCurrentTheme(value: ThemeValue) {
     localStorage.setItem("theme", value)
-    document.documentElement.classList.toggle(ThemeValue.dark)
+
+    if (value === ThemeValue.light) {
+      document.documentElement.classList.remove(ThemeValue.dark)
+      document.documentElement.classList.add(ThemeValue.light)
+    } else {
+      document.documentElement.classList.remove(ThemeValue.light)
+      document.documentElement.classList.add(ThemeValue.dark)
+    }
   }
 }

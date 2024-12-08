@@ -104,7 +104,9 @@ async function bootstrap() {
       commit;
     `)
 
-    console.log("bootstrapping successful")
+    console.log("bootstrapping DB successful - closing DB connection..")
+    db.close()
+    console.log("DB connection closed")
   } catch (err) {
     console.error(err, "< Error")
 
